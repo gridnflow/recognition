@@ -195,6 +195,9 @@ def main() -> int:
             key = cv2.waitKey(1) & 0xFF
             if key in (ord("q"), ord("Q"), 27):  # 27 = ESC
                 return 0
+            # 창의 X 버튼으로 닫힌 경우
+            if cv2.getWindowProperty("Muk-Jji-Ppa", cv2.WND_PROP_VISIBLE) < 1:
+                return 0
             if key != 255:
                 app.on_key(key)
     finally:
